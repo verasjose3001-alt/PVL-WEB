@@ -23,6 +23,9 @@
       '<span class="brand-name">PVL</span>' +
       '<span class="brand-name-sub">BARBERSHOP</span>' +
       "</a>" +
+      '<button id="nav-toggle" class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">' +
+      "<span></span><span></span><span></span>" +
+      "</button>" +
       '<nav class="main-nav">' +
       links +
       "</nav>" +
@@ -59,6 +62,24 @@
   var footerEl = document.getElementById("site-footer");
   if (headerEl) headerEl.innerHTML = buildHeader();
   if (footerEl) footerEl.innerHTML = buildFooter();
+
+  var navToggle = document.getElementById("nav-toggle");
+  var mainNav = document.getElementById("main-nav");
+  if (navToggle && mainNav) {
+    navToggle.addEventListener("click", function () {
+      var isOpen = mainNav.classList.toggle("nav-open");
+      navToggle.classList.toggle("nav-toggle-open", isOpen);
+      navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+    document.addEventListener("click", function (e) {
+      if (!mainNav.classList.contains("nav-open")) return;
+      if (mainNav.contains(e.target) || navToggle.contains(e.target)) return;
+      mainNav.classList.remove("nav-open");
+      navToggle.classList.remove("nav-toggle-open");
+      navToggle.setAttribute("aria-expanded", "false");
+    });
+  }
+
 
   // ---------- Transición entre páginas ----------
   requestAnimationFrame(function () {
