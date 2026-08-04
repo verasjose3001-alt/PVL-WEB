@@ -76,7 +76,7 @@ const CATALOG = {
       video: ""
     },
      {
-      id: "junior",
+      id: "leo",
       name: "Pepin",
       specialty: "Fades y diseños",
       image: "assets/pepin.jpg",
