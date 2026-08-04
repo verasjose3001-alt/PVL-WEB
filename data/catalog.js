@@ -22,10 +22,10 @@ const CATALOG = {
     {
       id: "corte-clasico",
       name: "Corte Clásico",
-      price: 500,
+      price: 800,
       duration: 30,
       description: "Corte a tijera y máquina, incluye lavado.",
-      image: ""
+      image: "assets/fade3.jpg"
     },
     {
       id: "corte-barba",
@@ -33,15 +33,15 @@ const CATALOG = {
       price: 800,
       duration: 50,
       description: "Corte completo más perfilado de barba con navaja.",
-      image: ""
+      image: "assets/barba1.jpg"
     },
     {
       id: "afeitado",
       name: "Afeitado Clásico",
-      price: 400,
+      price: 800,
       duration: 25,
       description: "Afeitado tradicional con toalla caliente y navaja.",
-      image: ""
+      image: "assets/fade1.jpg"
     },
     {
       id: "diseno",
