@@ -480,9 +480,8 @@ body[data-page="productos"] .section:not(.section-alt) {
   margin: 0;
 }
 
-@media (max-width: 640px)
- {
- .nav-toggle { display: flex; }
+@media (max-width: 640px) {
+  .nav-toggle { display: flex; }
   .main-nav {
     position: absolute;
     top: 100%;
