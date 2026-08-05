@@ -740,6 +740,7 @@ body[data-page="productos"] .section:not(.section-alt) {
 @media (max-width: 640px) {
   .nav-toggle { display: flex; }
   .main-nav {
+    display: flex;
     position: absolute;
     top: 100%;
     left: 0;
