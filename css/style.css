@@ -73,6 +73,28 @@ body.modal-open { overflow: hidden; }
   border-radius: 2px;
 }
 
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 26px;
+  height: 18px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+.nav-toggle span {
+  display: block;
+  height: 2px;
+  background: var(--white);
+  border-radius: 1px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+.nav-toggle-open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.nav-toggle-open span:nth-child(2) { opacity: 0; }
+.nav-toggle-open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
 /* ---------- Hero ---------- */
 .hero {
   padding: 140px 0 110px;
