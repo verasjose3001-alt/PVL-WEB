@@ -3,6 +3,7 @@
   var NAV_ITEMS = [
     { href: "index.html", label: "Inicio", key: "inicio" },
     { href: "servicios.html", label: "Servicios", key: "servicios" },
+    { href: "portafolio.html", label: "Portafolio", key: "portafolio" },
     { href: "reserva.html", label: "Reserva", key: "reserva", cta: true },
     { href: "productos.html", label: "Productos", key: "productos" },
     { href: "nosotros.html", label: "Nosotros", key: "nosotros" }
@@ -26,7 +27,7 @@
       '<button id="nav-toggle" class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">' +
       "<span></span><span></span><span></span>" +
       "</button>" +
-      '<nav class="main-nav">' +
+      '<nav class="main-nav" id="main-nav">' +
       links +
       "</nav>" +
       "</div>"
@@ -34,6 +35,7 @@
   }
 
   function buildFooter() {
+    var icons = window.PVL_ICONS || {};
     var wa =
       "https://wa.me/" + CATALOG.whatsappNumber + "?text=" + encodeURIComponent("Hola, quisiera más información.");
     var social = CATALOG.brand.social || {};
@@ -41,9 +43,12 @@
     var socialLinks = Object.keys(socialLabels)
       .filter(function (key) { return social[key]; })
       .map(function (key) {
-        return '<a href="' + social[key] + '" target="_blank" rel="noopener">' + socialLabels[key] + "</a>";
+        return '<a href="' + social[key] + '" target="_blank" rel="noopener">' + (icons[key] || "") + socialLabels[key] + "</a>";
       })
       .join("");
+    socialLinks +=
+      '<a href="' + CATALOG.brand.mapsShareUrl + '" target="_blank" rel="noopener">' +
+      (icons.location || "") + "Cómo Llegar</a>";
 
     return (
       '<div class="container footer-inner">' +
@@ -51,9 +56,10 @@
       '<p class="brand-name-sub">' + CATALOG.brand.name + "</p>" +
       "<p>" + CATALOG.brand.address + "</p>" +
       "<p>" + CATALOG.brand.hours + "</p>" +
-      (socialLinks ? '<div class="footer-social">' + socialLinks + "</div>" : "") +
+      '<div class="footer-social">' + socialLinks + "</div>" +
       "</div>" +
-      '<a class="btn btn-outline" href="' + wa + '" target="_blank" rel="noopener">Escribir por WhatsApp</a>' +
+      '<a class="btn btn-outline" href="' + wa + '" target="_blank" rel="noopener">' +
+      (icons.whatsapp || "") + "Escribir por WhatsApp</a>" +
       "</div>"
     );
   }
@@ -63,6 +69,7 @@
   if (headerEl) headerEl.innerHTML = buildHeader();
   if (footerEl) footerEl.innerHTML = buildFooter();
 
+  // ---------- Menú móvil ----------
   var navToggle = document.getElementById("nav-toggle");
   var mainNav = document.getElementById("main-nav");
   if (navToggle && mainNav) {
@@ -79,7 +86,6 @@
       navToggle.setAttribute("aria-expanded", "false");
     });
   }
-
 
   // ---------- Transición entre páginas ----------
   requestAnimationFrame(function () {

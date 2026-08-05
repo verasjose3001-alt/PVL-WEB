@@ -1,4 +1,4 @@
-// Página Reserva: elegir barbero (grid + modal tipo perfil) y confirmar en el formulario.
+// Página Reserva: elegir barbero (grid + modal compartido) y confirmar en el formulario.
 (function () {
   function waLink(message) {
     return "https://wa.me/" + CATALOG.whatsappNumber + "?text=" + encodeURIComponent(message);
@@ -54,23 +54,25 @@
     window.open(waLink(msg), "_blank");
   });
 
+  // En esta página ya hay formulario: en vez de navegar, lo preseleccionamos y bajamos a él.
+  window.PVLBarberModal.onBook = function (barberId, serviceId) {
+    if (barberId) barberSelect.value = barberId;
+    if (serviceId) serviceSelect.value = serviceId;
+    window.PVLBarberModal.close();
+    document.getElementById("reservar-formulario").scrollIntoView({ behavior: "smooth" });
+  };
+
   // ---------- Grid de barberos ----------
   var grid = document.getElementById("barbers-grid");
-  var overlay = document.getElementById("barber-modal-overlay");
-  if (!grid || !overlay) return;
+  if (!grid) return;
 
-  var barbersList = CATALOG.barbers.filter(function (b) {
-    return b.id !== "cualquiera";
-  });
+  var barbersList = CATALOG.barbers.filter(function (b) { return b.id !== "cualquiera"; });
 
   function initials(name) {
     return name.charAt(0).toUpperCase();
   }
-
   function avatarHTML(barber) {
-    if (barber.image) {
-      return '<img src="' + barber.image + '" alt="' + barber.name + '" />';
-    }
+    if (barber.image) return '<img src="' + barber.image + '" alt="' + barber.name + '" />';
     return "<span>" + initials(barber.name) + "</span>";
   }
 
@@ -88,61 +90,6 @@
   grid.addEventListener("click", function (e) {
     var card = e.target.closest("[data-barber]");
     if (!card) return;
-    openModal(card.getAttribute("data-barber"));
-  });
-
-  // ---------- Modal ----------
-  var modalAvatar = document.getElementById("modal-avatar");
-  var modalName = document.getElementById("modal-name");
-  var modalTagline = document.getElementById("modal-tagline");
-  var modalVideo = document.getElementById("modal-video");
-  var modalGallery = document.getElementById("modal-gallery");
-  var modalBookBtn = document.getElementById("modal-book-btn");
-  var modalClose = document.getElementById("modal-close");
-  var currentBarberId = null;
-
-  function openModal(barberId) {
-    var b = barbersList.filter(function (x) { return x.id === barberId; })[0];
-    if (!b) return;
-    currentBarberId = b.id;
-
-    modalAvatar.innerHTML = avatarHTML(b);
-    modalName.textContent = b.name;
-    modalTagline.textContent = b.tagline || b.specialty;
-
-    modalVideo.innerHTML = b.video
-      ? '<video src="' + b.video + '" muted loop autoplay playsinline></video>'
-      : '<div class="modal-video-placeholder">Video próximamente</div>';
-
-    var slots = b.gallery && b.gallery.length ? b.gallery : ["", "", "", "", "", ""];
-    modalGallery.innerHTML = slots
-      .map(function (img) {
-        return img
-          ? '<div class="modal-gallery-item"><img src="' + img + '" alt="Trabajo de ' + b.name + '" /></div>'
-          : '<div class="modal-gallery-item modal-gallery-placeholder"></div>';
-      })
-      .join("");
-
-    overlay.classList.add("open");
-    document.body.classList.add("modal-open");
-  }
-
-  function closeModal() {
-    overlay.classList.remove("open");
-    document.body.classList.remove("modal-open");
-  }
-
-  modalClose.addEventListener("click", closeModal);
-  overlay.addEventListener("click", function (e) {
-    if (e.target === overlay) closeModal();
-  });
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") closeModal();
-  });
-
-  modalBookBtn.addEventListener("click", function () {
-    if (currentBarberId) barberSelect.value = currentBarberId;
-    closeModal();
-    document.getElementById("reservar-formulario").scrollIntoView({ behavior: "smooth" });
+    window.PVLBarberModal.open(card.getAttribute("data-barber"));
   });
 })();

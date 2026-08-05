@@ -9,7 +9,7 @@
 <meta property="og:type" content="business.business" />
 <meta property="og:title" content="PVL Barbershop | Barbería en Santo Domingo" />
 <meta property="og:description" content="Cortes, barba y afeitado clásico. Reserva tu cita por WhatsApp con PVL Barbershop, barbería en Santo Domingo desde 2013." />
-<meta property="og:image" content="https://www.pvlbarbershop.com/assets/foto.jpg" />
+<meta property="og:image" content="https://www.pvlbarbershop.com/assets/logo1.JPEG" />
 <meta property="og:url" content="https://www.pvlbarbershop.com/" />
 <meta property="og:locale" content="es_DO" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,13 +20,14 @@
   "@context": "https://schema.org",
   "@type": "HairSalon",
   "name": "PVL Barbershop",
-  "image": "https://www.pvlbarbershop.com/assets/foto.jpg",
+  "image": "https://www.pvlbarbershop.com/assets/logo1.JPEG",
   "telephone": "+18292156020",
   "priceRange": "RD$200-RD$800",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Calle Principal #123",
+    "streetAddress": "C. José de Jesús Ravelo 29",
     "addressLocality": "Santo Domingo",
+    "postalCode": "10413",
     "addressCountry": "DO"
   },
   "openingHours": "Mo-Sa 09:00-19:00",
@@ -41,6 +42,7 @@
 
   <section class="hero hero-full">
     <div class="container hero-inner">
+      <img src="assets/logo2.JPEG" alt="PVL Barbershop" class="services-badge hero-badge" />
       <p class="script-tag">Since 2013</p>
       <h1>PVL BARBERSHOP</h1>
       <p class="hero-sub">Estilo clásico, actitud moderna. Cortes, barba y estilo — reserva tu cita en segundos.</p>
@@ -51,9 +53,71 @@
     </div>
   </section>
 
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Nuestro Equipo</h2>
+      <div id="team-preview" class="grid"></div>
+      <div class="section-cta">
+        <a href="reserva.html" class="btn btn-outline">Elegir Barbero y Reservar</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">Portafolio</h2>
+      <div id="portfolio-preview" class="portfolio-grid"></div>
+      <div class="section-cta">
+        <a href="portafolio.html" class="btn btn-outline">Ver Portafolio Completo</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Horario</h2>
+      <div id="schedule-table" class="schedule-table"></div>
+    </div>
+  </section>
+
   <div id="site-footer" class="site-footer"></div>
 
+  <!-- Modal de perfil de barbero -->
+  <div id="barber-modal-overlay" class="modal-overlay">
+    <div class="barber-modal">
+      <button id="modal-close" class="modal-close" aria-label="Cerrar">&times;</button>
+      <div class="modal-scroll">
+        <div class="modal-profile-header">
+          <div class="modal-avatar" id="modal-avatar"></div>
+          <h3 id="modal-name"></h3>
+          <p id="modal-tagline" class="modal-tagline"></p>
+        </div>
+
+        <div class="modal-tabs" id="modal-tabs">
+          <button class="modal-tab active" data-tab="perfil">Perfil</button>
+          <button class="modal-tab" data-tab="servicios">Servicios</button>
+          <button class="modal-tab" data-tab="portafolio">Portafolio <span class="modal-tab-count" id="modal-tab-count"></span></button>
+        </div>
+
+        <div class="modal-tab-panel" data-panel="perfil">
+          <div class="modal-video" id="modal-video"></div>
+        </div>
+        <div class="modal-tab-panel" data-panel="servicios" hidden>
+          <div class="modal-services" id="modal-services"></div>
+        </div>
+        <div class="modal-tab-panel" data-panel="portafolio" hidden>
+          <div class="modal-gallery" id="modal-gallery"></div>
+        </div>
+      </div>
+      <button id="modal-book-btn" class="btn btn-primary modal-book-btn">Reservar con este barbero</button>
+    </div>
+  </div>
+
   <script src="data/catalog.js"></script>
+  <script src="js/icons.js"></script>
   <script src="js/layout.js"></script>
+  <script src="js/lightbox.js"></script>
+  <script src="js/barber-modal.js"></script>
+  <script src="js/home.js"></script>
 </body>
 </html>

@@ -21,6 +21,7 @@
 
   <section class="page-header">
     <div class="container">
+      <img src="assets/logo2.JPEG" alt="PVL Barbershop" class="services-badge" />
       <p class="script-tag">Desde 2013</p>
       <h1 class="page-title">Sobre Nosotros</h1>
     </div>
@@ -56,9 +57,24 @@
     </div>
   </section>
 
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Ubicación</h2>
+      <div class="map-wrap">
+        <iframe id="map-embed" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+      <p class="about-text map-address" id="map-address"></p>
+      <div class="map-cta">
+        <a class="btn btn-outline" id="map-directions" target="_blank" rel="noopener">Cómo Llegar</a>
+      </div>
+    </div>
+  </section>
+
   <div id="site-footer" class="site-footer"></div>
 
   <script src="data/catalog.js"></script>
+  <script src="js/icons.js"></script>
   <script src="js/layout.js"></script>
+  <script src="js/map.js"></script>
 </body>
 </html>

@@ -4,7 +4,7 @@
   var container = document.getElementById("bg-slideshow");
   if (!container) return;
 
-  var images = CATALOG.products.map(function (p) { return p.image; }).filter(Boolean);
+  var images = CATALOG.products.reduce(function (acc, p) { return acc.concat(p.images || []); }, []).filter(Boolean);
   if (!images.length) {
     images = ["assets/fondo.jpg", "assets/puerta.jpg", "assets/foto.jpg"];
   }

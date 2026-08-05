@@ -21,6 +21,7 @@
 
   <section class="page-header">
     <div class="container">
+      <img src="assets/logo2.JPEG" alt="PVL Barbershop" class="services-badge" />
       <p class="script-tag">Elige a tu barbero</p>
       <h1 class="page-title">Reserva tu Cita</h1>
     </div>
@@ -70,18 +71,35 @@
       <div class="modal-scroll">
         <div class="modal-profile-header">
           <div class="modal-avatar" id="modal-avatar"></div>
-          <h3 id="modal-name">jose</h3>
+          <h3 id="modal-name"></h3>
           <p id="modal-tagline" class="modal-tagline"></p>
         </div>
-        <div class="modal-video" id="modal-video"></div>
-        <div class="modal-gallery" id="modal-gallery"></div>
+
+        <div class="modal-tabs" id="modal-tabs">
+          <button class="modal-tab active" data-tab="perfil">Perfil</button>
+          <button class="modal-tab" data-tab="servicios">Servicios</button>
+          <button class="modal-tab" data-tab="portafolio">Portafolio <span class="modal-tab-count" id="modal-tab-count"></span></button>
+        </div>
+
+        <div class="modal-tab-panel" data-panel="perfil">
+          <div class="modal-video" id="modal-video"></div>
+        </div>
+        <div class="modal-tab-panel" data-panel="servicios" hidden>
+          <div class="modal-services" id="modal-services"></div>
+        </div>
+        <div class="modal-tab-panel" data-panel="portafolio" hidden>
+          <div class="modal-gallery" id="modal-gallery"></div>
+        </div>
       </div>
       <button id="modal-book-btn" class="btn btn-primary modal-book-btn">Reservar con este barbero</button>
     </div>
   </div>
 
   <script src="data/catalog.js"></script>
+  <script src="js/icons.js"></script>
   <script src="js/layout.js"></script>
+  <script src="js/lightbox.js"></script>
+  <script src="js/barber-modal.js"></script>
   <script src="js/reserva.js"></script>
 </body>
 </html>
