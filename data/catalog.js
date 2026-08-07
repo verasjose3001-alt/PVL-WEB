@@ -109,7 +109,7 @@ const CATALOG = {
       tagline: "Especialista en fades y diseños de líneas",
       services: ["corte-clasico", "diseno"],
       gallery: ["assets/barba1.jpg", "assets/barba2.jpg", "assets/barba3.jpg", "assets/barba5.jpg", "", ""],
-      video: "assets/img_9851.mov"
+      video: "assets/video project 1.mp4"
     },
     {
       id: "pepin",
