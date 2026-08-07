@@ -39,7 +39,7 @@ const CATALOG = {
       price: 500,
       duration: 30,
       description: "Corte a tijera y máquina, incluye lavado.",
-      image: "assets/fade3"
+      image: "assets/fade3.jpg"
     },
     {
       id: "corte-barba",
@@ -109,7 +109,7 @@ const CATALOG = {
       tagline: "Especialista en fades y diseños de líneas",
       services: ["corte-clasico", "diseno"],
       gallery: ["assets/barba1.jpg", "assets/barba2.jpg", "assets/barba3.jpg", "assets/barba5.jpg", "", ""],
-      video: ""
+      video: "assets/img_9851.mov"
     },
     {
       id: "pepin",
